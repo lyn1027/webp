@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>인사하기</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-color: #f4f4f9;
+        }
+        .input-box {
+            border: 2px solid #007bff;
+            padding: 25px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        #greeting-output {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="input-box">
+        <label for="nameInput">이름을 입력하세요: </label>
+        <input type="text" id="nameInput" placeholder="예: 홍길동">
+        <button onclick="greet()">확인</button>
+    </div>
+
+    <p id="greeting-output"></p>
+
+    <script>
+        function greet() {
+            const name = document.getElementById('nameInput').value;
+            if (name === "") {
+                alert("이름을 입력해주세요!");
+                return;
+            }
+            const outputElement = document.getElementById('greeting-output');
+            outputElement.textContent = `👋 안녕하세요, ${name}님! 만나서 반갑습니다.`;
+        }
+
+        const nameInput = document.getElementById('nameInput');
+
+        nameInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                greet();
+            }
+        });
+    </script>
+
+</body>
+</html>
